@@ -1,0 +1,91 @@
+name : send message
+on: 
+    push:
+        branches:
+        - 'v1.2'
+        tags:
+        - 'latest'
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Creat tag
+        uses: rickstaa/action-create-tag@v1
+        id: "tag_create"
+        with:
+          tag: "latest"
+          force_push_tag: true
+          message: "Latest release"
+      - name: Release
+        uses: ncipollo/release-action@v1
+        with:
+          skipIfReleaseExists: true
+          tag: "latest"
+          artifacts: "release.tar.gz,foo/*.txt"
+          bodyFile: "body.md"
+
+      - name: Install Railway
+        run: npm i -g @railway/cli
+
+      - name: Deploy
+        run: railway up
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+      - name: Send custom JSON data to Slack workflow
+        id: slack
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          payload: |
+              {
+                "blocks": [
+                  {
+                    "type": "header",
+                    "text": {
+                      "type": "plain_text",
+                      "text": "DipSA41C CI/CD Assignment Submission",
+                      "emoji": true
+                    }
+                  },
+                  {
+                    "type": "divider"
+                  },
+                  {
+                    "type": "section",
+                    "fields": [
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Name:*\nYe Fengyuan"
+                      },
+                      {
+                        "type": "mrkdwn",
+                        "text": "\t*Metriculation:*\nA0285665M"
+                      },
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Email:*\nE1216650@u.nus.edu"
+                      },
+                      {
+                        "type": "mrkdwn",
+                        "text": "\t*Repository:*\n <https://github.com/kenye1105/dipsa41ccide.git>"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "section",
+                    "fields": [
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Deployment:* \n<https://dipsa41ccicd-production-9405.up.railway.app>\n\n<https://dipsa41ccicd-production-9405.up.railway.app|Open Application>"
+                      }
+                    ]
+                  }
+                ]
+              }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
