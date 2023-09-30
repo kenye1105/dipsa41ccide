@@ -1,4 +1,4 @@
-name : Golang web example
+name : send message
 on: 
     push:
         branches:
