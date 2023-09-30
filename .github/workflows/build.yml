@@ -36,3 +36,57 @@ jobs:
         run: railway up
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+      - name: Send custom JSON data to Slack workflow
+        id: slack
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          payload:
+            {
+              "text": "Workshop 2 - CICD - YE Fengyuan.",
+              "blocks": [
+                  {
+                    "type": "header",
+                    "text": {
+                      "type": "plain_text",
+                      "text": "DipSA41C CI/CD Assignment Submission",
+                      "emoji": true
+                    }
+                  },
+                  {
+                    "type": "divider"
+                  },
+                  {
+                    "type": "section",
+                    "fields": [
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Name:*\nYe Fengyuan"
+                      },
+                      {
+                        "type": "mrkdwn",
+                        "text": "\t*Metriculation:*\nA0285665M"
+                      },
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Email:*\nE1216650@u.nus.edu"
+                      },
+                      {
+                        "type": "mrkdwn",
+                        "text": "\t*Repository:*\n<https://github.com/>"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "section",
+                    "fields": [
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Deployment:* \n<https://>\n\n<https://>"
+                      }
+                    ]
+                  }
+                ]
+              }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
