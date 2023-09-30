@@ -2,7 +2,7 @@ name : send message
 on: 
     push:
         branches:
-        - 'v1.2'
+        - 'v1.0'
         tags:
         - 'latest'
 
