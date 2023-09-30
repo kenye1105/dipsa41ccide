@@ -72,7 +72,7 @@ jobs:
                      },
                      {
                        "type": "mrkdwn",
-                       "text": "\t*Repository:*\n<https://github.com/>"
+                       "text": "\t*Repository:*\n<https://https://github.com/kenye1105/dipsa41ccide.git>"
                      }
                    ]
                  },
@@ -81,7 +81,7 @@ jobs:
                    "fields": [
                      {
                        "type": "mrkdwn",
-                       "text": "*Deployment:* \n<https://>\n\n<https://>"
+                       "text": "*Deployment:* \n<https://dipsa41ccicd-production-9405.up.railway.app/>\n\n<https://dipsa41ccicd-production-9405.up.railway.app/|Open Application>"
                      }
                    ]
                  }
