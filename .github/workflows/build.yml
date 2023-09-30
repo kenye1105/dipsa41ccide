@@ -40,7 +40,7 @@ jobs:
         id: slack
         uses: slackapi/slack-github-action@v1.24.0
         with:
-          payload:
+          payload: |
             {
               "text": "Workshop 2 - CICD - YE Fengyuan.",
               "blocks": [
