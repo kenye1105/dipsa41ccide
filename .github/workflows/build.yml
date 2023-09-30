@@ -36,14 +36,12 @@ jobs:
         run: railway up
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-      - name: Send GitHub Action trigger data to Slack workflow
+      - name: Send custom JSON data to Slack workflow
         id: slack
         uses: slackapi/slack-github-action@v1.24.0
         with:
           payload: |
               {
-                "key": "value",
-                "foo": "bar",
                 "blocks": [
                   {
                     "type": "header",
