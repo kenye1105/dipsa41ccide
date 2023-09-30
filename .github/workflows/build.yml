@@ -1,4 +1,4 @@
-name : send message
+name : Golang web example
 on: 
     push:
         branches:
@@ -36,9 +36,9 @@ jobs:
         run: railway up
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-      - name: Send custom JSON data to Slack workflow
+      - name: Send GitHub Action trigger data to Slack workflow
         id: slack
-        uses: slackapi/slack-github-action@v1.24
+        uses: slackapi/slack-github-action@v1.24.0
         with:
           payload: |
               {
@@ -90,4 +90,3 @@ jobs:
               }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
