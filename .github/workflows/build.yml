@@ -41,52 +41,52 @@ jobs:
         uses: slackapi/slack-github-action@v1.24.0
         with:
           payload: |
-            {
-              "text": "Workshop 2 - CICD - YE Fengyuan.",
-              "blocks": [
-                 {
-                   "type": "header",
-                   "text": {
-                     "type": "plain_text",
-                     "text": "DipSA41C CI/CD Assignment Submission",
-                     "emoji": true
-                   }
-                 },
-                 {
-                   "type": "divider"
-                 },
-                 {
-                   "type": "section",
-                   "fields": [
-                     {
-                       "type": "mrkdwn",
-                       "text": "*Name:*\nYe Fengyuan"
-                     },
-                     {
-                       "type": "mrkdwn",
-                       "text": "\t*Metriculation:*\nA0285665M"
-                     },
-                     {
-                       "type": "mrkdwn",
-                       "text": "*Email:*\nE1216650@u.nus.edu"
-                     },
-                     {
-                       "type": "mrkdwn",
-                       "text": "\t*Repository:*\n<https://https://github.com/kenye1105/dipsa41ccide.git>"
-                     }
-                   ]
-                 },
-                 {
-                   "type": "section",
-                   "fields": [
-                     {
-                       "type": "mrkdwn",
-                       "text": "*Deployment:* \n<https://dipsa41ccicd-production-9405.up.railway.app/>\n\n<https://dipsa41ccicd-production-9405.up.railway.app/|Open Application>"
-                     }
-                   ]
-                 }
-               ]
-             }
+              {
+                "text": "Workshop 2 - CICD - YE Fengyuan.",
+                "blocks": [
+                  {
+                    "type": "header",
+                    "text": {
+                      "type": "plain_text",
+                      "text": "DipSA41C CI/CD Assignment Submission",
+                      "emoji": true
+                    }
+                  },
+                  {
+                    "type": "divider"
+                  },
+                  {
+                    "type": "section",
+                    "fields": [
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Name:*\nYe Fengyuan"
+                      },
+                      {
+                        "type": "mrkdwn",
+                        "text": "\t*Metriculation:*\nA0285665M"
+                      },
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Email:*\nE1216650@u.nus.edu"
+                      },
+                      {
+                        "type": "mrkdwn",
+                        "text": "\t*Repository:*\n<https://https://github.com/kenye1105/dipsa41ccide.git>"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "section",
+                    "fields": [
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Deployment:* \n<https://dipsa41ccicd-production-9405.up.railway.app/>\n\n<https://dipsa41ccicd-production-9405.up.railway.app/|Open Application>"
+                      }
+                    ]
+                  }
+                ]
+              }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
